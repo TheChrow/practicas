@@ -19,6 +19,8 @@ def autores(self):
 
     return render(self, 'libreriaApp/autores.html')
 
+
+
 def registrarLibro(request):
     if request.method == 'POST':
         titulo = request.POST['titulo']
@@ -72,7 +74,7 @@ def registrarAutor(request):
 
         if Autor.objects.filter(rut=rut).exists():
             mensaje2 = 'Ya existe un autor con ese rut'
-    else:
+
         try: 
             autor = Autor(rut=rut, nombreAutor=nombreAutor, fechaNacimiento=fechaNacimiento, email=email)
             autor.full_clean()
