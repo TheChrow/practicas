@@ -1,1 +1,55 @@
 {% include 'libreriaApp/navBar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autores</title>
+    <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+</head>
+<body>
+    <div id="autors">
+    <form action="{% url 'registrarLibro' %}" method="POST">
+    {% csrf_token %}
+    <label for="titulo">Titulo</label>
+    {% if mensaje2 %}
+    <div role="alert">{{mensaje2}}</div>
+    {% endif %}
+    <input type="text" name="titulo" id="titulo">
+    <label for="ano">Año Lanzamiento</label>
+    <input type="date" name="ano" id="ano">  
+    <label for="genero">Genero</label>
+    <input type="text" name="genero" id="genero">
+    <label for="numeroPaginas">Paginas</label>
+    <input type="number" name="numeroPaginas" id="numeroPaginas">
+    <label for="autor">Autor</label>
+    <select name="autor" id="autor">
+        {% for autor in autores %}
+        <option value="{{autor.id}}">{{autor.nombreAutor}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Regitrar</button>
+    </form>
+    {% if mensaje1 %}
+    <div role="alert">{{mensaje1}}</div>
+    {% endif %}
+
+    {% if mensaje2 %}
+    <div role="alert">{{mensaje2}}</div>
+    {% endif %}
+
+    {% if mensaje3 %}
+    <div role="alert">{{mensaje3}}</div>
+    {% endif %}
+
+    {% if mensaje4 %}
+    <div role="alert">{{mensaje4}}</div>
+    {% endif %}
+
+
+
+    </div>
+
+</body>
+</html>

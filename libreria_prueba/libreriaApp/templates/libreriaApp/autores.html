@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
 </head>
 <body>
+    <div id="autors">
     <form action="{% url 'registrarAutor' %}" method="POST">
     {% csrf_token %}
     <label for="rut">Rut</label>
-    {% if autorexistente %}
-    <div role="alert">{{autorexistente}}</div>
+    {% if mensaje2 %}
+    <div role="alert">{{mensaje2}}</div>
     {% endif %}
     <input type="text" name="rut" id="rut">
     <label for="nombreAutor">Nombre Completo</label>
@@ -24,6 +25,14 @@
     <input type="email" name="email" id="email">
     <button type="submit">Crear</button>
     </form>
+    {% if mensaje3 %}
+    <div role="alert">{{mensaje3}}</div>
+    {% endif %}
 
+    {% if mensaje1 %}
+    <div role="alert">{{mensaje1}}</div>
+    {% endif %}
+
+    </div>
 </body>
 </html>

@@ -7,12 +7,12 @@
     <title>Libreria App</title>
     <link rel="stylesheet" href="{% static 'css/stylesnb.css' %}">
 </head>
-<body>
+<body id="nav">
     <nav>
         <ul>
-            <li><a href="{% url 'libros' %}">Crear Libros</a></li>
             <li><a href="{% url 'inicio' %}">Index</a></li>
             <li><a href="{% url 'autores' %}">Crear Autores</a></li>
+            <li><a href="{% url 'libros' %}">Crear Libros</a></li>
         </ul>
     </nav>
 </body>
