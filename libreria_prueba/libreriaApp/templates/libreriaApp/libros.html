@@ -13,9 +13,6 @@
     <form action="{% url 'registrarLibro' %}" method="POST">
     {% csrf_token %}
     <label for="titulo">Titulo</label>
-    {% if mensaje2 %}
-    <div role="alert">{{mensaje2}}</div>
-    {% endif %}
     <input type="text" name="titulo" id="titulo">
     <label for="ano">Año Lanzamiento</label>
     <input type="date" name="ano" id="ano">  
@@ -31,8 +28,8 @@
     </select>
     <button type="submit">Regitrar</button>
     </form>
-    {% if mensaje1 %}
-    <div role="alert">{{mensaje1}}</div>
+    {% if mensaje %}
+    <div role="alert">{{mensaje}}</div>
     {% endif %}
 
     {% if mensaje2 %}

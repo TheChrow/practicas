@@ -19,8 +19,6 @@ def autores(self):
 
     return render(self, 'libreriaApp/autores.html')
 
-
-
 def registrarLibro(request):
     if request.method == 'POST':
         titulo = request.POST['titulo']
