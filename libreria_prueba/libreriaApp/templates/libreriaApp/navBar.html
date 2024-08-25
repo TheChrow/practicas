@@ -1,0 +1,19 @@
+{% load static %}   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria App</title>
+    <link rel="stylesheet" href="{% static 'css/stylesnb.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'libros' %}">Crear Libros</a></li>
+            <li><a href="{% url 'inicio' %}">Index</a></li>
+            <li><a href="{% url 'autores' %}">Crear Autores</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

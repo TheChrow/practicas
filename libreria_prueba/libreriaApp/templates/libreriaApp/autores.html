@@ -1,0 +1,29 @@
+{% include 'libreriaApp/navBar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autores</title>
+    <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+</head>
+<body>
+    <form action="{% url 'registrarAutor' %}" method="POST">
+    {% csrf_token %}
+    <label for="rut">Rut</label>
+    {% if autorexistente %}
+    <div role="alert">{{autorexistente}}</div>
+    {% endif %}
+    <input type="text" name="rut" id="rut">
+    <label for="nombreAutor">Nombre Completo</label>
+    <input type="text" name="nombreAutor" id="nombreAutor">
+    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+    <input type="date" name="fechaNacimiento" id="fechaNacimiento">  
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email">
+    <button type="submit">Crear</button>
+    </form>
+
+</body>
+</html>

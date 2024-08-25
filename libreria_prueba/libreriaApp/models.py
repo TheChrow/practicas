@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Autor(models.Model):
@@ -16,3 +17,7 @@ class Libro(models.Model):
     genero = models.CharField(max_length=50)
     numeroPaginas = models.IntegerField()
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+
+    def clean(self):
+        if self.autor.libro_set.count() >= 10:
+            raise ValidationError('El autor no puede tener más de 10 libros')

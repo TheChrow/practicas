@@ -4,12 +4,20 @@ from django.core.exceptions import ValidationError
 
 # Create your views here.
 def inicio(request):
-    return render(request, 'libreriaApp/index.html')
+
+    libros = Libro.objects.all()
+
+    return render(request, 'libreriaApp/index.html', {'libros': libros})
+
+def libros(self):
+
+    return render(self, 'libreriaApp/libros.html')
+
+def autores(self):
+
+    return render(self, 'libreriaApp/autores.html')
 
 
-def listadoLibros(request):
-
-    pass
 
 def registrarLibro(request):
 
@@ -44,16 +52,18 @@ def registrarAutor(request):
     email = request.POST['email']
 
     if not all([rut, nombreAutor, fechaNacimiento, email]):
-        return render(request, 'libreriaApp/index.html', {'mensaje': 'Debe completar todos los campos'})
+        mensaje1 = 'Debe completar todos los campos'
+        return render(request, 'libreriaApp/autores.html', {'datosIncompleto':mensaje1}) 
 
     if Autor.objects.filter(rut=rut).exists():
-        return render(request, 'libreriaApp/index.html', {'mensaje': 'Ya existe un autor con ese rut'})
+        mensaje2 = 'Ya existe un autor con ese rut'
+        return render(request, 'libreriaApp/autores.html', {'autorexistente': mensaje2})
 
     try: 
-
+        mensaje3 = 'Autor registrado correctamente'
         autor = Autor(rut=rut, nombreAutor=nombreAutor, fechaNacimiento=fechaNacimiento, email=email)
         autor.full_clean()
         autor.save()
-        return render(request, 'libreriaApp/index.html', {'mensaje': 'Autor registrado correctamente'})    
+        return render(request, 'libreriaApp/autores.html', {'exitoso': mensaje3})    
     except ValidationError as e:
-        return render(request, 'libreriaApp/index.html', {'mensaje': e.message_dict})
+        return render(request, 'libreriaApp/autores.html', {'errorCreacion': e.message_dict})

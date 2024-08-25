@@ -1,11 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Libreria</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    {% include 'libreriaApp/navBar.html' %}
+    <div>
+        <h1>Grilla de libros</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Fecha de Publicacion</th>
+                    <th>Genero</th>
+                    <th>Numero de Paginas</th>
+                    <th>autor</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for libro in libros %}
+                    <tr>
+                        <td>{{ libro.titulo }}</td>
+                        <td>{{ libro.ano }}</td>
+                        <td>{{ libro.genero }}</td>
+                        <td>{{ libro.numeroPaginas }}</td>
+                        <td>{{ libro.autor }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+
+    </div>
     
 </body>
 </html>
