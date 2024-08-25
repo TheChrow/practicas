@@ -45,7 +45,7 @@ def registrarLibro(request):
             mensaje2 = 'El autor no existe'
 
         if autor.libro_set.count() >= 10:
-            mensaje3 = 'El autor no puede tener más de 10 libros'
+            mensaje3 = 'No es posible registrar el libro, se alcanzó el máximo permitido'
 
         try:
             libro = Libro(titulo=titulo, ano=ano, genero=genero, numeroPaginas=numeroPaginas, autor_id=autor_id)
@@ -85,3 +85,11 @@ def registrarAutor(request):
             errorCreacion  = e.message_dict
     
     return render(request, 'libreriaApp/autores.html', {'mensaje1': mensaje1, 'mensaje3': mensaje3, 'errorCreacion': errorCreacion})
+
+def buscador(request):
+    if request.method == 'POST':
+        busqueda = request.POST['busqueda']
+        libros = Libro.objects.filter(titulo__icontains=busqueda)
+        return render(request, 'libreriaApp/index.html', {'libros': libros})
+
+    return render(request, 'libreriaApp/index.html')

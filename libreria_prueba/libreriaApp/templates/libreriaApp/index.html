@@ -11,6 +11,14 @@
     {% include 'libreriaApp/navBar.html' %}
     <div>
         <h1>Grilla de libros</h1>
+
+        <form action="{% url 'buscarLibro' %}" method="POST">
+            {% csrf_token %}
+            <label for="busqueda">Buscar por título:</label>
+            <input type="text" name="busqueda" id="busqueda" placeholder="Ingrese título del libro">
+            <button type="submit">Buscar</button>
+        </form>
+
         <table>
             <thead>
                 <tr>

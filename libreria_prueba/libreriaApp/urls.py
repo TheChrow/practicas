@@ -7,4 +7,5 @@ urlpatterns = [
     path('autores/', views.autores, name='autores'),
     path('registrarLibro/', views.registrarLibro, name='registrarLibro'),
     path('registrarAutor/', views.registrarAutor, name='registrarAutor'),
+    path('buscarLibro/', views.buscador, name='buscarLibro'),
 ]
