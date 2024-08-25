@@ -13,9 +13,6 @@
     <form action="{% url 'registrarAutor' %}" method="POST">
     {% csrf_token %}
     <label for="rut">Rut</label>
-    {% if mensaje2 %}
-    <div role="alert">{{mensaje2}}</div>
-    {% endif %}
     <input type="text" name="rut" id="rut">
     <label for="nombreAutor">Nombre Completo</label>
     <input type="text" name="nombreAutor" id="nombreAutor">
@@ -25,14 +22,18 @@
     <input type="email" name="email" id="email">
     <button type="submit">Crear</button>
     </form>
-    {% if mensaje3 %}
-    <div role="alert">{{mensaje3}}</div>
-    {% endif %}
 
     {% if mensaje1 %}
     <div role="alert">{{mensaje1}}</div>
     {% endif %}
 
+    {% if mensaje2 %}
+    <div role="alert">{{mensaje2}}</div>
+    {% endif %}
+
+    {% if mensaje3 %}
+    <div role="alert">{{mensaje3}}</div>
+    {% endif %}
     </div>
 </body>
 </html>

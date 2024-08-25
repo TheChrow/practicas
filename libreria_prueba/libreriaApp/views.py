@@ -74,7 +74,8 @@ def registrarAutor(request):
 
         if Autor.objects.filter(rut=rut).exists():
             mensaje2 = 'Ya existe un autor con ese rut'
-
+            return render(request, 'libreriaApp/autores.html', {'mensaje2': mensaje2})
+    
         try: 
             autor = Autor(rut=rut, nombreAutor=nombreAutor, fechaNacimiento=fechaNacimiento, email=email)
             autor.full_clean()
@@ -83,4 +84,4 @@ def registrarAutor(request):
         except ValidationError as e:
             errorCreacion  = e.message_dict
     
-    return render(request, 'libreriaApp/autores.html', {'mensaje1': mensaje1, 'mensaje2': mensaje2, 'mensaje3': mensaje3, 'errorCreacion': errorCreacion})
+    return render(request, 'libreriaApp/autores.html', {'mensaje1': mensaje1, 'mensaje3': mensaje3, 'errorCreacion': errorCreacion})
